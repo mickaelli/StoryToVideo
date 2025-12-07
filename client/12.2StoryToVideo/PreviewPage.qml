@@ -103,10 +103,10 @@ Page {
                 source: videoSource
 
                 // 添加事件监听用于调试
-                onError: console.error("MediaPlayer error:", error, errorString)
-                onStatusChanged: {
-                    console.log("MediaPlayer status:", status);
-                    if (status === MediaPlayer.Loaded) {
+                onErrorOccurred: console.error("MediaPlayer error:", error, errorString)
+                onMediaStatusChanged: {
+                    console.log("MediaPlayer status:", mediaStatus);
+                    if (mediaStatus === MediaPlayer.LoadedMedia) {
                         console.log("视频已加载，时长:", duration, "ms");
                     }
                 }

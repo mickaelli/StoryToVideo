@@ -45,3 +45,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 QT += quickcontrols2
+
+# 确保链接器包含 Homebrew 的库路径，帮助 macdeployqt 解析依赖
+QMAKE_LFLAGS += -Wl,-rpath,/opt/homebrew/lib

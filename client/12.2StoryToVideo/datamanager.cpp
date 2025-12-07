@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDebug>
+#include <QStandardPaths>
 
 DataManager::DataManager(QObject *parent)
     : QObject(parent)
@@ -12,8 +13,8 @@ DataManager::DataManager(QObject *parent)
 
 QString DataManager::getStoragePath(const QString &fileName)
 {
-    // 当前目录/data/
-    QString dirPath = QDir::currentPath() + "/data/";
+    // 使用系统标准的应用程序数据目录 (例如: ~/Library/Application Support/StoryToVideoGenerator/data/)
+    QString dirPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/data/";
 
     QDir dir(dirPath);
     if (!dir.exists())
